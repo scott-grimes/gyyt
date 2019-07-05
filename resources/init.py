@@ -30,7 +30,6 @@ def repo_create(path):
         raise Exception(f'{worktree} is not empty')
 
     # create required directories
-
     assert(utils.repo_dir(repo, "branches", mkdir=True))
     assert(utils.repo_dir(repo, "objects", mkdir=True))
     assert(utils.repo_dir(repo, "refs", "tags", mkdir=True))

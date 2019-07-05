@@ -1,6 +1,7 @@
 import os
 import configparser
 from . import utils
+from abc import abstractmethod
 
 class GyytRepo():
   '''
@@ -42,6 +43,7 @@ class GyytObject():
     of the object
     '''
     repo = None
+    fmt = None
 
     def __init__(self, repo, data=None):
         self.repo=repo
@@ -56,3 +58,12 @@ class GyytObject():
     @abstractmethod
     def deserialize(self, data):
         pass
+
+class GyytBlob(GyytObject):
+    fmt=b'blob'
+
+    def serialize(self):
+        return self.blobdata
+
+    def deserialize(self,data):
+        self.blobdata = data
